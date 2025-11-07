@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-briefcase me-2"></i>Lista de Portafolios</h2>
+    <a href="{% url 'agregar_portafolio' %}" class="btn btn-success">
+        <i class="fas fa-plus me-1"></i>Agregar Portafolio
+    </a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        {% if portafolios %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Valor Total</th>
+                        <th>Riesgo</th>
+                        <th>Fecha Creación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for portafolio in portafolios %}
+                    <tr>
+                        <td>{{ portafolio.id }}</td>
+                        <td>{{ portafolio.nombre }}</td>
+                        <td>{{ portafolio.usuario.nombre }} {{ portafolio.usuario.apellido }}</td>
+                        <td>${{ portafolio.valor_total }}</td>
+                        <td>
+                            <span class="badge 
+                                {% if portafolio.riesgo == 'bajo' %}bg-success
+                                {% elif portafolio.riesgo == 'medio' %}bg-warning
+                                {% else %}bg-danger{% endif %}">
+                                {{ portafolio.get_riesgo_display }}
+                            </span>
+                        </td>
+                        <td>{{ portafolio.fecha_creacion|date:"d/m/Y" }}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-info" title="Ver">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{% url 'actualizar_portafolio' portafolio.id %}" class="btn btn-warning" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'borrar_portafolio' portafolio.id %}" class="btn btn-danger" title="Borrar">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-4">
+            <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+            <h4>No hay portafolios registrados</h4>
+            <p class="text-muted">Comienza agregando el primer portafolio al sistema.</p>
+            <a href="{% url 'agregar_portafolio' %}" class="btn btn-success">Agregar Primer Portafolio</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h2 class="mb-4">Bienvenido a Investech</h2>
+        <p class="lead mb-4">
+            Sistema de administración de inversiones moderno y eficiente para gestionar 
+            usuarios, portafolios y activos financieros.
+        </p>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Gestión de Usuarios</h5>
+                        <p class="card-text">Administra los usuarios del sistema con operaciones CRUD completas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-briefcase fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Portafolios</h5>
+                        <p class="card-text">Gestiona los portafolios de inversión de cada usuario.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-coins fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Activos</h5>
+                        <p class="card-text">Administra los diferentes activos financieros disponibles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                 alt="Inversiones" class="img-fluid rounded shadow" style="max-height: 400px;">
+        </div>
+    </div>
+</div>
+{% endblock %}
